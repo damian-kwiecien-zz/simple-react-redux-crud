@@ -1,0 +1,66 @@
+version: "3"
+services:
+
+  db:
+    image: mongo:latest
+    restart: always
+    environment:
+      dbDomainAddress: http://localhost:27017
+      dbLogin: 1
+      dbPassword: 1 
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+    networks:
+      - fake
+    container_name: db
+
+  front:
+    environment:
+      frontDomainAddress: http://localhost:7100
+    volumes:
+      - ../front/src:/front/src:cached
+    expose:
+      - 7100
+    ports:
+      - 7100:7100
+    depends_on: 
+      - db
+      - back
+    networks:
+      - fake
+    build: ../front
+    container_name: front
+    
+  back:
+    environment:
+      backDomainAddress: http://localhost:7200
+    volumes:
+      - ../back/src:/back/src:cached
+      - ../back/test:/back/test:cached
+    expose:
+      - 7200
+    ports:
+      - 7200:7200
+    depends_on: 
+      - db
+    networks:
+      - fake
+    build: ../back
+    container_name: back
+
+  swagger:
+    image: swaggerapi/swagger-ui
+    depends_on: 
+      - back
+    expose:
+      - 7300
+    ports:
+      - "7300:8080"
+    environment:
+      swaggerDomainAddress: http://localhost:3000/openapi.json
+
+networks:
+  fake:
+    driver: bridge

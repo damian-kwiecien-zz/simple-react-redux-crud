@@ -1,4 +1,4 @@
-FROM node:8.12.0-jessie
+FROM node:latest
 WORKDIR /front
 
 COPY package.json ./

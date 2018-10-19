@@ -1,8 +1,9 @@
 version: "3"
 services:
+
   front:
     environment:
-      domainAddress: http://localhost:7000
+      frontDomainAddress: http://localhost:7000
     volumes:
       - ../front/src:/front/src:cached
     expose:

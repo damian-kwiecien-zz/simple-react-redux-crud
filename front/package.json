@@ -1,14 +1,18 @@
 {
-  "name": "simple-react-redux-crud",
+  "name": "simple-react-redux-crud-front",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Sample app written in react-redux-typescript, nest.js, mongoDb. For learning purposes.",
+  "main": "src/index.tsx",
   "scripts": {
     "start": "webpack-dev-server --host 0.0.0.0 --port 7000 --mode development --open --hot",
     "build": "webpack --mode production"
   },
   "author": "Damian Kwiecień",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damian-kwiecien/simple-react-redux-crud.git"
+  },
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
