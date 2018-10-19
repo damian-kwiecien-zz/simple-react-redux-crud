@@ -1,9 +1,11 @@
-import * as React from "react"
-import * as ReactDOM from "react-dom"
+import React from 'react'
+import { render } from 'react-dom';
+import configureStore from './configure-store'
+import RootRouter from './root-router'
 
-import App from "./App"
+const store = configureStore({})
 
-ReactDOM.render(
-    <App hello='Hello' world='World' />,
-    document.getElementById("root")
+render(
+    <RootRouter store={store} />,
+    document.getElementById('root')
 )
